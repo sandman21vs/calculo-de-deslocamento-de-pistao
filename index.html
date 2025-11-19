@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Calculadora de Deslocamento do Pistão</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="backdrop" aria-hidden="true"></div>
+    <main class="app">
+      <header class="app__header">
+        <p class="eyebrow">Ferramenta técnica</p>
+        <h1>Calculadora de deslocamento do pistão</h1>
+        <p class="lede">
+          Organize seus parâmetros de operação e descubra instantaneamente o
+          deslocamento total percorrido pelo pistão em um determinado período.
+        </p>
+      </header>
+
+      <section class="card">
+        <form id="calcForm" class="calc-form" novalidate>
+          <div class="field">
+            <label for="tamanhoPistao">Tamanho do pistão (cm)</label>
+            <input
+              type="number"
+              id="tamanhoPistao"
+              name="tamanhoPistao"
+              value="15"
+              step="0.01"
+              min="0"
+              required
+            />
+          </div>
+
+          <div class="field">
+            <label for="cursoPercent">Curso (% do tamanho do pistão)</label>
+            <input
+              type="number"
+              id="cursoPercent"
+              name="cursoPercent"
+              value="70"
+              step="0.1"
+              min="0"
+              required
+            />
+          </div>
+
+          <div class="field">
+            <label for="repsSeg">Repetições por segundo (1/s)</label>
+            <input
+              type="number"
+              id="repsSeg"
+              name="repsSeg"
+              value="1"
+              step="0.01"
+              min="0"
+              required
+            />
+          </div>
+
+          <div class="field">
+            <label for="tempoDia">Tempo de funcionamento por dia (min)</label>
+            <input
+              type="number"
+              id="tempoDia"
+              name="tempoDia"
+              value="20"
+              step="1"
+              min="0"
+              required
+            />
+          </div>
+
+          <div class="field">
+            <label for="vezesSemana">Vezes por semana</label>
+            <input
+              type="number"
+              id="vezesSemana"
+              name="vezesSemana"
+              value="2"
+              step="1"
+              min="0"
+              required
+            />
+          </div>
+
+          <div class="field field--double">
+            <label for="tempoValor">Tempo total de funcionamento</label>
+            <div class="field__group">
+              <input
+                type="number"
+                id="tempoValor"
+                name="tempoValor"
+                value="2"
+                step="0.1"
+                min="0"
+                required
+              />
+              <select id="tempoUnidade" name="tempoUnidade">
+                <option value="anos" selected>Anos</option>
+                <option value="meses">Meses</option>
+              </select>
+            </div>
+            <small>Escolha o período total e informe o valor numérico.</small>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn--primary">
+              Calcular
+            </button>
+            <button
+              type="button"
+              class="btn btn--ghost"
+              id="shareButton"
+              disabled
+            >
+              Compartilhar no Twitter
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <section class="card result-card" aria-live="polite">
+        <header class="result-card__header">
+          <p class="eyebrow">Resultado</p>
+          <h2>Distância percorrida</h2>
+        </header>
+        <div id="resultado" class="resultado">
+          Informe os parâmetros ao lado e clique em <strong>Calcular</strong>
+          para ver os números principais.
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js" type="module"></script>
+  </body>
+</html>
