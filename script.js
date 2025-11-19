@@ -100,7 +100,7 @@ const calcular = () => {
   )}x por semana, jurando que era corrida maluca. Esse pistao virou rato de academia e rodou ${formatNumber(
     distanciaTotalKm
   )} km em ${tempoLabel}. Tempo de funcionamento mais organizado que minha agenda haha`;
-  const tweetText = `${jokeText} Calcula o seu aqui: ${window.location.href}`;
+  const tweetText = `${jokeText} Venha ver como tá a sua lata velha: ${window.location.href}`;
   setShareState(tweetText);
 };
 
