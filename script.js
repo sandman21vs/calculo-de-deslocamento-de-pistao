@@ -1,6 +1,7 @@
 const form = document.getElementById('calcForm');
 const resultContainer = document.getElementById('resultado');
 const shareButton = document.getElementById('shareButton');
+const shareWhatsAppButton = document.getElementById('shareWhatsAppButton');
 
 let shareMessage = '';
 
@@ -11,7 +12,9 @@ const formatNumber = (value, decimals = 2) =>
 
 const setShareState = (message) => {
   shareMessage = message;
-  shareButton.disabled = !message;
+  const isDisabled = !message;
+  shareButton.disabled = isDisabled;
+  shareWhatsAppButton.disabled = isDisabled;
 };
 
 const showError = (message) => {
@@ -90,9 +93,14 @@ const calcular = () => {
     </ul>
   `;
 
-  const tweetText = `Meu pistão percorre ${formatNumber(
+  const jokeText = `Meu ultimo carro so encarou ${formatNumber(
+    tempoDiaMin
+  )} min por dia e ${formatNumber(
+    vezesSemana
+  )}x por semana, jurando que era corrida maluca. Esse pistao virou rato de academia e rodou ${formatNumber(
     distanciaTotalKm
-  )} km em ${tempoLabel}. Calcule o seu deslocamento: ${window.location.href}`;
+  )} km em ${tempoLabel}. Tempo de funcionamento mais organizado que minha agenda haha`;
+  const tweetText = `${jokeText} Calcula o seu aqui: ${window.location.href}`;
   setShareState(tweetText);
 };
 
@@ -113,4 +121,16 @@ shareButton.addEventListener('click', () => {
   window.open(shareUrl.toString(), '_blank', 'noopener,noreferrer');
 });
 
+shareWhatsAppButton.addEventListener('click', () => {
+  if (!shareMessage) {
+    return;
+  }
+
+  const shareUrl = new URL('https://api.whatsapp.com/send');
+  shareUrl.searchParams.set('text', shareMessage);
+  window.open(shareUrl.toString(), '_blank', 'noopener,noreferrer');
+});
+
 calcular();
+
+
